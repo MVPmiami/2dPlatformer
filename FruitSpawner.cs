@@ -6,9 +6,9 @@ public class FruitSpawner : MonoBehaviour
 
     [SerializeField] private Transform _points;
     [SerializeField] private Sprite _sprite;
+    [SerializeField] private float _spriteScale;
 
-    private float spriteScale = 2.5f;
-    void Start()
+    private void Start()
     {
         foreach (Transform point in _points)
         {
@@ -18,7 +18,7 @@ public class FruitSpawner : MonoBehaviour
             if (spriteObject.TryGetComponent<SpriteRenderer>(out spriteRenderer))
             {
                 spriteRenderer.sprite = _sprite;
-                spriteRenderer.transform.localScale = new Vector3(spriteScale, spriteScale, 1);
+                spriteRenderer.transform.localScale = new Vector3(_spriteScale, _spriteScale, 1);
                 spriteObject.transform.position = point.position;
             }
         }

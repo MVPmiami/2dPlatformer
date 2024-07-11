@@ -6,10 +6,18 @@ public class Counter : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _text;
 
-    private void Update()
+    private void OnEnable()
     {
-        int count = _player.FruitCount;
+        _player.FruitCountChanged += DisplayCount;
+    }
 
-        _text.text = count.ToString();
+    private void OnDisable()
+    {
+        _player.FruitCountChanged -= DisplayCount;
+    }
+
+    private void DisplayCount()
+    {
+        _text.text = _player.FruitCount.ToString();
     }
 }

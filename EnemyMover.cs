@@ -5,14 +5,13 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Transform _path;
     [SerializeField] private int _startPoint;
+    [SerializeField] private float _localScale;
 
     private Transform[] _points;
     private int _currentPoint;
-    private float _localScale;
 
     private void Start()
     {
-        _localScale = 2.5f;
         _currentPoint = _startPoint - 1;
         _points = new Transform[_path.childCount];
 

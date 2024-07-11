@@ -16,14 +16,9 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _localScale;
 
     private bool _grounded;
-    private float _localScale;
-
-    private void Start()
-    {
-        _localScale = 2.5f;
-    }
 
     private void Update()
     {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,11 +8,7 @@ public class Player : MonoBehaviour
     private int _fruitCount;
 
     public int FruitCount => _fruitCount;
-
-    private void Start()
-    {
-        _fruitCount = 0;
-    }
+    public event Action FruitCountChanged;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,6 +16,7 @@ public class Player : MonoBehaviour
         {
             _fruitCount++;
             Destroy(collision.gameObject);
+            FruitCountChanged?.Invoke();
         }
     }
 }
