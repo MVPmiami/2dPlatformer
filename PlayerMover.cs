@@ -36,7 +36,7 @@ public class PlayerMover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == GroundName)
+        if (collision.gameObject.tag == GroundName)
             _grounded = true;
     }
 

@@ -16,8 +16,8 @@ public class Counter : MonoBehaviour
         _player.FruitCountChanged -= DisplayCount;
     }
 
-    private void DisplayCount()
+    private void DisplayCount(int fruitCount)
     {
-        _text.text = _player.FruitCount.ToString();
+        _text.text = fruitCount.ToString();
     }
 }

@@ -3,20 +3,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private const string FruitName = "Fruit";
-
     private int _fruitCount;
 
-    public int FruitCount => _fruitCount;
-    public event Action FruitCountChanged;
+    public event Action<int> FruitCountChanged;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == FruitName)
+        if (collision.gameObject.TryGetComponent(out Fruit fruit))
         {
             _fruitCount++;
             Destroy(collision.gameObject);
-            FruitCountChanged?.Invoke();
+            FruitCountChanged?.Invoke(_fruitCount);
         }
     }
 }
