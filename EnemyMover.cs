@@ -15,28 +15,31 @@ public class EnemyMover : MonoBehaviour
         _currentPoint = _startPoint - 1;
         _points = new Transform[_path.childCount];
 
-        for (int i = 0; i < _path.childCount; i++)
+        for (int i = 0; i < _points.Length; i++)
             _points[i] = _path.GetChild(i);
     }
 
+    private void FixedUpdate()
+    {
+        Move();
+        ChangeViewDirection();
+    }
 
-    private void Update()
+    private void Move()
     {
         Transform target = _points[_currentPoint];
-        
+
         transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
+        if (transform.position.x == target.position.x)
+            _currentPoint = ++_currentPoint % _points.Length;
+    }
+
+    private void ChangeViewDirection()
+    {
         if (_currentPoint != 0)
             transform.localScale = new Vector2(_localScale, _localScale);
         else if (_currentPoint == 0)
             transform.localScale = new Vector2(-_localScale, _localScale);
-
-        if (transform.position.x == target.position.x)
-        {
-            _currentPoint++;
-
-            if (_currentPoint >= _points.Length)
-                _currentPoint = 0;
-        }
     }
 }
