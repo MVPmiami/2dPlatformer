@@ -1,6 +1,8 @@
-public class Fruit : PickableItem
+using UnityEngine;
+
+public class Fruit : MonoBehaviour, IPickable
 {
-    public override void PickUp()
+    public  void PickUp()
     {
         Destroy(gameObject);
     }

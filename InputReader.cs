@@ -8,7 +8,6 @@ public class InputReader : MonoBehaviour
     private bool _isJump;
 
     public float Direction { get; private set; }
-    
 
     private void Update()
     {

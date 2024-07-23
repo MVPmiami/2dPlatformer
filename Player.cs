@@ -12,24 +12,16 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (_inputReader.Direction != 0)
+        {
             _playerAnimator.Run();
-
-        if (_inputReader.Direction == 0)
-            _playerAnimator.Idle();
-
-        if (_groundDetector.IsGround)
-            _playerAnimator.Grounded();
-
-        if (_inputReader.Direction != 0)
             _playerMover.Run(_inputReader.Direction);
+        }
+        else
+        {
+            _playerAnimator.Idle();
+        }
 
         if (_inputReader.GetIsJump() && _groundDetector.IsGround)
             _playerMover.Jump();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out PickableItem fruit))
-            _playerCollector.CollectFruit(fruit);
     }
 }

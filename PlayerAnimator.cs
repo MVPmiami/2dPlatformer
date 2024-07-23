@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    private const string RunState = "RunState";
+
     [SerializeField] private Animator _animator;
 
-    private const string RunState = "run";
-    private const string GroundedState = "grounded";
+    private int _runHash;
 
-    public void Grounded()
+    private void Start()
     {
-        _animator.SetBool(GroundedState, true);
+        _runHash = Animator.StringToHash(nameof(RunState));
     }
 
     public void Run()
     {
-        _animator.SetBool(RunState, true);
+        _animator.SetBool(_runHash, true);
     }
 
     public void Idle()
     {
-        _animator.SetBool(RunState, false);
+        _animator.SetBool(_runHash, false);
     }
 }

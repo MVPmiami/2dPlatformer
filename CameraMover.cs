@@ -3,8 +3,8 @@ using UnityEngine;
 public class CameraMover : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] float _cameraZOffset;
-    [SerializeField] float _smoothSpeed;
+    [SerializeField] private float _cameraZOffset;
+    [SerializeField] private float _smoothSpeed;
 
     private void Update()
     {

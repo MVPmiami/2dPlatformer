@@ -7,7 +7,13 @@ public class PlayerCollector : MonoBehaviour
 
     public event Action<int> FruitCountChanged;
 
-    public void CollectFruit(PickableItem fruit)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IPickable fruit))
+            CollectFruit(fruit);
+    }
+
+    private void CollectFruit(IPickable fruit)
     {
         _fruitCount++;
         fruit.PickUp();

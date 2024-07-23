@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public abstract class PickableItem : MonoBehaviour
+﻿public interface IPickable
 {
-    public abstract void PickUp();
+    void PickUp();
 }
